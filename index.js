@@ -24,7 +24,7 @@ app.get("/api/:date?", (req, res) => {
   var json = { error: "Invalid Date" };
   
   const toTimestamp = (date) => Math.floor(date.getTime() / 1000);
-  const fromTimestamp = (timestamp) => new Date(timestamp * 1000);
+  const fromTimestamp = (timestamp) => new Date(timestamp);
 
   let unix, utc;
 
