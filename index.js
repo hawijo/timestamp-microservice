@@ -23,7 +23,7 @@ app.get("/api/:date?", (req, res) => {
   var date = req.params.date;
   var json = { error: "Invalid Date" };
   
-  const toTimestamp = (date) => Math.floor(date.getTime() / 1000);
+  const toTimestamp = (date) => Math.floor(date.getTime() * 1);
   const fromTimestamp = (timestamp) => new Date(timestamp);
 
   let unix, utc;
@@ -31,7 +31,7 @@ app.get("/api/:date?", (req, res) => {
   if (date) {
     let parsedDate = new Date(date);
     if (!isNaN(parsedDate.getTime())) {
-      unix = toTimestamp(parsedDate) * 1000;
+      unix = toTimestamp(parsedDate);
       utc = parsedDate.toUTCString();
     } else if (!isNaN(date)) {
       unix = date;
