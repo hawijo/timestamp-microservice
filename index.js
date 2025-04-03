@@ -31,10 +31,10 @@ app.get("/api/:date?", (req, res) => {
   if (date) {
     let parsedDate = new Date(date);
     if (!isNaN(parsedDate.getTime())) {
-      unix = toTimestamp(parsedDate);
+      unix = toTimestamp(parsedDate) * 1000;
       utc = parsedDate.toUTCString();
     } else if (!isNaN(date)) {
-      unix = date;
+      unix = date * 1000;
       utc = new Date(fromTimestamp(date)).toUTCString();
     } else {
       return res.json(json);
