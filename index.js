@@ -22,9 +22,9 @@ app.get("/", function (req, res) {
 app.get("/api/:date?", (req, res) => {
   var date = req.params.date;
   var json = { error: "Invalid Date" };
-  
-  const toTimestamp = (date) => Math.floor(date.getTime() * 1);
-  const fromTimestamp = (timestamp) => new Date(timestamp);
+
+  const toTimestamp = (date) => Math.floor(date.getTime() / 1);
+  const fromTimestamp = (timestamp) => new Date(timestamp * 1);
 
   let unix, utc;
 
