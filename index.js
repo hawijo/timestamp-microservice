@@ -74,6 +74,7 @@ app.get("/api", (req, res) => {
   }
 
   res.json({ unix: unix, utc: utc });
+  console.log(date);
 });
 
 // Listen on port set in environment variable or default to 3000
