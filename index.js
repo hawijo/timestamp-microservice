@@ -48,34 +48,6 @@ app.get("/api/:date?", (req, res) => {
 });
 
 
-app.get("/api", (req, res) => {
-  var date = req.query.date;
-  var json = { error: "Invalid Date" };
-
-  const toTimestamp = (date) => Math.floor(date.getTime() / 1);
-  const fromTimestamp = (timestamp) => new Date(timestamp * 1);
-
-  let unix, utc;
-
-  if (date) {
-    let parsedDate = new Date(date);
-    if (!isNaN(parsedDate.getTime())) {
-      unix = toTimestamp(parsedDate);
-      utc = parsedDate.toUTCString();
-    } else if (!isNaN(date)) {
-      unix = date;
-      utc = new Date(fromTimestamp(date)).toUTCString();
-    } else {
-      return res.json(json);
-    }
-  } else {
-    unix = new Date().valueOf();
-    utc = new Date().toUTCString();
-  }
-
-  res.json({ unix: unix, utc: utc });
-  console.log(date);
-});
 
 // Listen on port set in environment variable or default to 3000
 var listener = app.listen(process.env.PORT || 3000, function () {
