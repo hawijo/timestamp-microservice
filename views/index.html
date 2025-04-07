@@ -12,16 +12,22 @@
     <h1>Timestamp Microservice</h1>
     <hr />
     <div class="container">
-      <h2>Example Usage:</h2>
-      <ul>
-        <li><a href="api/2015-12-25">[project url]/api/2015-12-25</a></li>
-        <li><a href="api/1451001600000">[project url]/api/1451001600000</a></li>
-      </ul>
-
-      <h2>Example Output:</h2>
-      <p>
-        <code>{"unix":1451001600000, "utc":"Fri, 25 Dec 2015 00:00:00 GMT"}</code>
-      </p>
+      <h2>Timestamp Microservice</h2>
+      <p>Get the timestamp of a date or the current date.</p>
+      <form action="/api/" method="get">
+        <input type="text" name="date" placeholder="Enter a date (e.g., 2023-10-01 or 1696118400)" required>
+        <button type="submit">Get Timestamp</button>
+      </form>
+      <div class="result">
+        {% if result %}
+          <h3>Result:</h3>
+          <p>{{ result }}</p>
+        {% endif %}
+      </div>
+      <div class="example">
+        <h3>Example:</h3>
+        <p>GET /api/2023-10-01</p>
+        <p>GET /api/1696118400</p>
     </div>
     <div class="footer">
       <p>
