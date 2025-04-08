@@ -34,7 +34,7 @@ app.get("/api/:date?", (req, res) => {
       unix = toTimestamp(parsedDate);
       utc = parsedDate.toUTCString();
     } else if (!isNaN(date)) {
-      unix = date;
+      unix = parseInt(date);
       utc = new Date(fromTimestamp(date)).toUTCString();
     } else {
       return res.json(json);
